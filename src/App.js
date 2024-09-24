@@ -38,7 +38,7 @@ const questions = [
     milestone: `1. Launch 1st Pilot 2.Finalize the cloud kitchen Menu 3. Sort out financial for the cloud kitchen and pilot`,
   },
 ];
-
+// Adding this comment line for the first commit using the jira key
 function FlashCards() {
   const [selectedId, setSelectedId] = useState(null);
 
