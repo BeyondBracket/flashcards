@@ -1,25 +1,62 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./index";
 
-function App() {
+export default function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <FlashCards />
     </div>
   );
 }
 
-export default App;
+const questions = [
+  {
+    id: 1,
+    name: "Nilesh",
+    milestone:
+      "1. Setting up the JIRA with GitHub versioning automation. 2.Understanding and implementing the CI/CD Pipeline for Zypher 3.Completion of frontend of zypher ",
+  },
+  {
+    id: 2,
+    name: "Gokul",
+    milestone:
+      "1. LinkedIn Top Voice Batch 2. Complete 1 Course of VC/Investments",
+  },
+  {
+    id: 3,
+    name: "Nikhil",
+    milestone: "Yet To Decide",
+  },
+  {
+    id: 4,
+    name: "Yash",
+    milestone: "Yet To Decide",
+  },
+  {
+    id: 5,
+    name: "Siddhant",
+    milestone: `1. Launch 1st Pilot 2.Finalize the cloud kitchen Menu 3. Sort out financial for the cloud kitchen and pilot`,
+  },
+];
+// Adding this comment line for the first commit using the jira key
+function FlashCards() {
+  const [selectedId, setSelectedId] = useState(null);
+
+  function handleClick(id) {
+    setSelectedId(id !== selectedId ? id : null);
+  }
+
+  return (
+    <div className="flashcards">
+      {questions.map((name) => (
+        <div
+          key={name.id}
+          onClick={() => handleClick(name.id)}
+          className={name.id === selectedId ? "selected" : ""}
+        >
+          <p>{name.id === selectedId ? name.milestone : name.name}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
